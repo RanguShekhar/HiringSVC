@@ -1,0 +1,29 @@
+<div class="sidebar-header">
+    <span class="header-text" *ngIf="isExpanded">Navigation</span>
+    <button mat-icon-button (click)="toggleSidebar()" class="toggle-btn">
+        <mat-icon>{{ isExpanded ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+</div>
+
+<mat-nav-list class="nav-list">
+    <a mat-list-item routerLink="/job-seeker" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <span matListItemTitle *ngIf="isExpanded" class="nav-text">Job Seeker</span>
+    </a>
+    <a mat-list-item routerLink="/search-profile" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon matListItemIcon>search</mat-icon>
+        <span matListItemTitle *ngIf="isExpanded" class="nav-text">Search Profile</span>
+    </a>
+    <a mat-list-item routerLink="/profile-management" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon matListItemIcon>manage_accounts</mat-icon>
+        <span matListItemTitle *ngIf="isExpanded" class="nav-text">Profiles</span>
+    </a>
+    <a mat-list-item routerLink="/user-management" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon matListItemIcon>group</mat-icon>
+        <span matListItemTitle *ngIf="isExpanded" class="nav-text">Users</span>
+    </a>
+    <a mat-list-item routerLink="/interview-questions" routerLinkActive="nav-active" class="nav-item">
+        <mat-icon matListItemIcon>quiz</mat-icon>
+        <span matListItemTitle *ngIf="isExpanded" class="nav-text">Questions</span>
+    </a>
+</mat-nav-list>

@@ -1,0 +1,41 @@
+<div class="page-container">
+    <mat-card class="search-card premium-card">
+        <mat-card-header>
+            <div class="header-icon questions-icon-bg">
+                <mat-icon>quiz</mat-icon>
+            </div>
+            <mat-card-title>Knowledge Base Search</mat-card-title>
+            <mat-card-subtitle>Explore interview questions and best practices</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="search-box-wrapper">
+                <mat-form-field appearance="outline" class="search-field">
+                    <mat-label>Enter topic or question...</mat-label>
+                    <textarea matInput [(ngModel)]="searchQuery" rows="3"
+                        placeholder="e.g. Angular Lifecycle Hooks"></textarea>
+                    <mat-icon matPrefix>psychology</mat-icon>
+                </mat-form-field>
+                <div class="search-actions">
+                    <button mat-raised-button color="primary" (click)="onSearch()" class="premium-button">
+                        <mat-icon>search</mat-icon> Search Insights
+                    </button>
+                </div>
+            </div>
+            @if (response != '') {
+                  <div class="search-box-wrapper">
+                <div class=" response-card">
+                    <h3 class="section-title">Found Insights</h3>
+                    <pre>{{ response }}</pre>
+                    <!-- <mat-list class="modern-list">
+                        <mat-list-item  class="list-item">
+                            <mat-icon matListItemIcon class="item-icon">help_outline</mat-icon>
+                            <div matListItemTitle class="item-question">{{res.question}}</div>
+                            <div matListItemLine class="item-answer">{{ res.response }}</div>
+                        </mat-list-item>
+                    </mat-list> -->
+                </div>
+                </div>
+            }
+        </mat-card-content>
+    </mat-card>
+</div>

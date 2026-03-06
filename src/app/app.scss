@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #64748b;
+  --accent: #f43f5e;
+  --bg-main: #f8fafc;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-radius: 16px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --glass: rgba(255, 255, 255, 0.7);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+// Modern Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+// Premium Material Overrides
+.mat-mdc-card {
+  background: var(--bg-card) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow-md) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-2px);
+  }
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 4px;
+
+  .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 12px;
+    --mdc-outlined-text-field-focus-outline-color: var(--primary);
+    --mdc-outlined-text-field-focus-label-text-color: var(--primary);
+    background: white;
+
+    // Fix for overlapping text/labels in some configurations
+    .mdc-notched-outline__notch {
+      border-right: none;
+    }
+  }
+
+  // Ensure mat-select values don't overlap with icons or labels
+  .mat-mdc-select {
+    display: flex;
+    align-items: center;
+    padding-top: 2px;
+  }
+}
+
+// Global Overlay settings are now in styles.scss for highest priority
+
+.mat-mdc-select-panel {
+  border-radius: 12px !important;
+  padding: 8px !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: white !important;
+}
+
+.mat-mdc-option {
+  border-radius: 8px !important;
+  margin: 2px 0;
+
+  &:hover:not(.mdc-list-item--disabled) {
+    background: rgba(99, 102, 241, 0.05) !important;
+  }
+
+  &.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+    background: rgba(99, 102, 241, 0.1) !important;
+
+    .mdc-list-item__primary-text {
+      color: var(--primary) !important;
+      font-weight: 600 !important;
+    }
+  }
+}
+
+.mat-mdc-raised-button {
+  height: 48px;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+  padding: 0 28px !important;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+
+  &.mat-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3) !important;
+    }
+
+    &:disabled {
+      background: #e2e8f0 !important;
+    }
+  }
+}
+
+/*
+.mat-mdc-table {
+  background: white !important;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #dee2e6;
+
+  thead {
+    background: #f8f9fa !important;
+
+    th {
+      font-weight: 600 !important;
+      color: #212529 !important;
+      text-transform: none;
+      font-size: 14px !important;
+      letter-spacing: normal;
+      padding: 12px 16px !important;
+      border-bottom: 2px solid #dee2e6 !important;
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: background-color 0.15s ease;
+
+      td {
+        padding: 12px 16px !important;
+        font-size: 14px;
+        color: #212529;
+        border-bottom: 1px solid #dee2e6;
+        background-color: white;
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f8f9fa !important;
+
+        td {
+          background-color: #f8f9fa !important;
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  // Custom cell styles
+  .bold-cell {
+    font-weight: 600;
+    color: #212529;
+  }
+
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.mat-mdc-paginator {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6;
+  border-top: none;
+  color: #212529 !important;
+  font-weight: normal;
+}
+*/
+
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-accent {
+  background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+}

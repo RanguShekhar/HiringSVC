@@ -1,0 +1,209 @@
+/* Global Overlay Fix for Dropdowns/Modals - High Priority */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent page-level scrollbar */
+    width: 100%;
+}
+
+/* Angular Material dropdown overlay fix */
+.cdk-overlay-container,
+.cdk-overlay-pane {
+    z-index: 100000 !important;
+}
+
+/* Prevent fields covering overlay */
+.mat-mdc-form-field {
+    z-index: 0 !important;
+}
+
+/* Prevent parent clipping */
+mat-card,
+.form-wrapper,
+.container,
+.content,
+.section {
+    overflow: visible !important;
+}
+
+/* Material Select Panel - moved from app.scss to apply globally */
+.mat-mdc-select-panel {
+    border-radius: 12px !important;
+    padding: 8px !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: white !important; /* Fixes transparency/bleeding through issue */
+}
+
+.mat-mdc-option {
+    border-radius: 8px !important;
+    margin: 2px 0;
+
+    &:hover:not(.mdc-list-item--disabled) {
+        background: rgba(99, 102, 241, 0.05) !important;
+    }
+
+    &.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+        background: rgba(99, 102, 241, 0.1) !important;
+
+        .mdc-list-item__primary-text {
+            color: var(--primary) !important;
+            font-weight: 600 !important;
+        }
+    }
+}
+
+/* Material Menu Panel - Global Fix */
+.mat-mdc-menu-panel {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-lg) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    min-width: 200px;
+}
+
+.mat-mdc-menu-item {
+    line-height: 48px !important;
+    height: 48px !important;
+    
+    &:hover:not([disabled]) {
+        background: rgba(99, 102, 241, 0.05) !important;
+    }
+
+    mat-icon {
+        color: var(--text-muted);
+        margin-right: 12px;
+    }
+}
+
+/* --- Modern Table & Paginator Design --- */
+.table-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+}
+
+.mat-mdc-table {
+    width: 100%;
+    background: white !important;
+
+    thead {
+        background: #f8fafc !important;
+
+        th.mat-mdc-header-cell {
+            color: var(--text-muted) !important;
+            font-size: 12px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 16px 24px !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+    }
+
+    tbody {
+        tr.mat-mdc-row {
+            height: 60px; /* Taller rows for better readability */
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: #f8fafc !important;
+                transform: scale(1.001); /* Subtle scaling fix for border flickering */
+            }
+
+            td.mat-mdc-cell {
+                padding: 12px 24px !important;
+                border-bottom: 1px solid #f1f5f9 !important;
+                color: var(--text-main);
+                font-size: 14px;
+                
+                &:first-of-type {
+                    font-weight: 500;
+                }
+            }
+
+            &:last-child td {
+                border-bottom: none !important;
+            }
+        }
+    }
+}
+
+.mat-mdc-paginator {
+    background: white !important;
+    border-top: 1px solid #e2e8f0;
+    color: var(--text-muted) !important;
+    
+    .mat-mdc-paginator-container {
+        padding: 8px 24px !important;
+        justify-content: flex-end;
+    }
+
+    .mat-mdc-paginator-range-label {
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 16px;
+    }
+
+    .mat-mdc-icon-button {
+        color: var(--text-muted);
+        
+        &:hover {
+            background: #f1f5f9;
+            color: var(--primary);
+            cursor: pointer;
+        }
+    }
+}
+
+/* Badge Styles for Tables */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    
+    &.active, &.visa {
+        background: #dcfce7;
+        color: #166534;
+        
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #166534;
+        }
+    }
+    
+    &.pending, &.work {
+        background: #fef9c3;
+        color: #854d0e;
+
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #854d0e;
+        }
+    }
+
+    &.inactive {
+        background: #f1f5f9;
+        color: #64748b;
+
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+    }
+}

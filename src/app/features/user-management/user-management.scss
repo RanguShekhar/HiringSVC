@@ -1,0 +1,88 @@
+.table-container {
+    width: 100%;
+}
+
+.premium-card {
+    padding: 12px;
+}
+
+.mat-mdc-card-header {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icon {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.mat-mdc-card-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: var(--text-main);
+    margin-bottom: 2px !important;
+}
+
+.mat-mdc-card-subtitle {
+    font-size: 13px !important;
+    color: var(--text-muted);
+}
+
+.icon-small{
+   background-color: white;
+   color: red;
+   border: 0;
+   cursor: pointer;
+}
+
+/* Table styles are now global in styles.scss */
+/*
+.table-wrapper {
+    background: white;
+    border: 1px solid #dee2e6;
+}
+
+.status-badge {
+    &.visa {
+        background: #cfe2ff;
+        color: #084298;
+    }
+
+    &.work {
+        background: #e2e3e5;
+        color: #41464b;
+    }
+}
+
+.location-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #212529;
+
+    mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        color: #6c757d;
+    }
+}
+
+.modern-paginator {
+    margin-top: 0;
+}
+*/

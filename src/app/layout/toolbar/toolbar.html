@@ -1,0 +1,27 @@
+<mat-toolbar class="glass-header">
+    <div class="brand">
+        <mat-icon class="brand-icon">auto_awesome</mat-icon>
+        <span class="brand-name">Hiring SVC</span>
+    </div>
+    <span class="spacer"></span>
+    <div class="user-section" [matMenuTriggerFor]="profileMenu">
+        <div class="user-meta">
+            <span class="user-name">{{ userName }}</span>
+            <span class="user-role">Administrator</span>
+        </div>
+        <div class="avatar-container">
+            <img src="https://ui-avatars.com/api/?name={{userName}}&background=6366f1&color=fff" alt="Avatar">
+        </div>
+    </div>
+    <mat-menu #profileMenu="matMenu" class="modern-menu">
+        <div class="menu-header">
+            <p class="name">{{ userName }}</p>
+            <p class="email">{{ userEmail }}</p>
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="onLogout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>

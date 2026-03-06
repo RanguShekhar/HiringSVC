@@ -1,0 +1,29 @@
+<div class="layout-wrapper">
+    <app-toolbar [userName]="userName" [userEmail]="userEmail" (logout)="logout()">
+    </app-toolbar>
+
+    <mat-sidenav-container class="main-container" autosize>
+        <mat-sidenav #sidenav mode="side" opened class="side-nav" [class.collapsed]="!isExpanded">
+            <app-sidebar [isExpanded]="isExpanded" (toggle)="isExpanded = !isExpanded">
+            </app-sidebar>
+        </mat-sidenav>
+
+        <mat-sidenav-content class="page-content">
+            <main class="content-body">
+                <router-outlet></router-outlet>
+            </main>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>Copyright &copy; {{ currentYear }} RCRO Tech. All rights reserved.</p>
+            <div class="footer-links">
+                <a routerLink="/privacy-policy" routerLinkActive="active-link">Privacy Policy</a>
+                <a routerLink="/terms-of-service" routerLinkActive="active-link">Terms of Service</a>
+                <a routerLink="/help-center" routerLinkActive="active-link">Help Center</a>
+            </div>
+        </div>
+    </footer>
+    <app-loader></app-loader>
+</div>

@@ -1,0 +1,123 @@
+<div class="form-container">
+    <mat-card class="premium-card">
+        <mat-card-header>
+            <div class="header-icon">
+                <mat-icon>person_add</mat-icon>
+            </div>
+            <mat-card-title>Job Seeker Registration</mat-card-title>
+            <mat-card-subtitle>Complete the form below to register your profile</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="modern-form">
+                <div class="form-section">
+                    <h3 class="section-title">Personal Information</h3>
+                    <div class="form-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Full Name</mat-label>
+                            <input matInput formControlName="name" placeholder="John Doe">
+                            <mat-icon matPrefix>badge</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput formControlName="email" type="email" placeholder="john@example.com">
+                            <mat-icon matPrefix>alternate_email</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput formControlName="phone" placeholder="+1 (234) 567-8900">
+                            <mat-icon matPrefix>phone</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Job Preferences</h3>
+                    <div class="form-grid">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Visa Type</mat-label>
+                            <mat-select formControlName="visaType">
+                                <mat-option *ngFor="let option of visaTypeOptions" [value]="option.value">
+                                    {{ option.label }}
+                                </mat-option>
+                                <!-- <mat-option value="H1B">H1B</mat-option>
+                                <mat-option value="L1">L1</mat-option>
+                                <mat-option value="OPT">OPT</mat-option>
+                                <mat-option value="Citizen">US Citizen</mat-option>
+                                <mat-option value="GreenCard">Green Card</mat-option> -->
+                            </mat-select>
+                            <mat-icon matPrefix>public</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Employment Type</mat-label>
+                            <mat-select formControlName="employmentType" multiple>
+                                <mat-option *ngFor="let option of empTypeOptions" [value]="option.value">
+                                    {{ option.label }}
+                                </mat-option>
+                                <!-- <mat-option value="FullTime">Full Time</mat-option>
+                                <mat-option value="Contract">Contract</mat-option>
+                                <mat-option value="C2C">C2C</mat-option> -->
+                            </mat-select>
+                            <mat-icon matPrefix>work</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Work Type</mat-label>
+                            <mat-select formControlName="workType" multiple>
+                                <mat-option *ngFor="let option of workTypeOptions" [value]="option.value">
+                                    {{ option.label }}
+                                </mat-option>
+                                <!-- <mat-option value="Remote">Remote</mat-option>
+                                <mat-option value="Onsite">Onsite</mat-option>
+                                <mat-option value="Hybrid">Hybrid</mat-option> -->
+                            </mat-select>
+                            <mat-icon matPrefix>home_work</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Expected Salary (USD)</mat-label>
+                            <input matInput formControlName="expectedSalary" type="number" placeholder="90000">
+                            <mat-icon matPrefix>payments</mat-icon>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Preferred Location</mat-label>
+                            <input matInput formControlName="preferredLocation" placeholder="e.g. New York, NY">
+                            <mat-icon matPrefix>location_on</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="upload-section">
+                    <label class="section-label">Resume / CV <span class="required-star">*</span></label>
+                    <div class="custom-file-upload">
+                        <input type="file" id="resume" (change)="onFileChange($event)" hidden #fileInput>
+                        <div class="upload-box" (click)="fileInput.click()" [class.has-file]="selectedFile">
+                            <mat-icon>cloud_upload</mat-icon>
+                            <span>{{ selectedFile ? selectedFile.name : 'Click to upload your resume (PDF, DOCX)'
+                                }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkbox-section">
+                    <mat-checkbox formControlName="terms" color="primary">
+                        I agree to the <a href="#" class="inline-link">Terms and Conditions</a>
+                    </mat-checkbox>
+                </div>
+
+                <div class="form-actions">
+                    <button mat-raised-button color="primary" type="submit"
+                        [disabled]="jobForm.invalid || !selectedFile">
+                        <mat-icon>send</mat-icon>
+                        Register Profile
+                    </button>
+                    <button mat-button type="button" (click)="onClear()" class="secondary-button">Clear Form</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

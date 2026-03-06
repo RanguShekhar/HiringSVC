@@ -1,0 +1,16 @@
+
+<div class="header-container">
+  <h2 mat-dialog-title>Work Experience - {{userName}}</h2>
+  <div class="header-buttons">
+    <button mat-stroked-button appearance="fill" class="premium-button" color="primary" extended (click)="connectUser()">
+      <mat-icon>thumb_up</mat-icon>
+      Connect
+    </button>
+    <button mat-stroked-button appearance="fill"  class="close-button" color="warn" [mat-dialog-close]="true" style="margin-right: 15px;">
+      <mat-label>Close</mat-label>
+    </button>
+  </div>
+</div>
+<mat-dialog-content class="response-card">
+  <pre>{{ data }}</pre>
+</mat-dialog-content>
